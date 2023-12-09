@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-cloak</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        p{ font-size:24px; font-weight:bold;}
+        p[v-cloak]{ display:none}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>v-cloak : 준비될때까지 컴파일 되지 않은 요소를 숨기는데 사용 / 코드에서 v-cloak 이 로딩될때 사라짐(css와 함께사용)</h3>
+        <p v-cloak>{{ messeage }}</p>
+        <img v-bind:src="imgURL" v-bind:alt="imgAlt">
+    </div>
+    <script>
+        const {createApp} = Vue
+
+        setTimeout(() => {
+            createApp({
+                data(){
+                    return{
+                        messeage: '안녕 바다',
+                        imgURL:'https://i.pinimg.com/736x/5f/96/49/5f96498927c8b592c18dd87939af2d97.jpg',
+                        imgAlt:'여름바다'
+                    }
+                }
+            }).mount("#app")
+        }, 3000);
+    </script>
+</body>
+</html>
