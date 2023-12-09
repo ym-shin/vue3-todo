@@ -83,7 +83,9 @@ import { ref, watch, onMounted, computed } from 'vue';
     todos.value.push({
       content:input_content.value,
       category:input_category.value,
-      done:false
+      done:false,
+      createAt: new Date().getTime()
+      //시간순으로 순서를 넣기 위해 UTC1970년 1월 1일  ~ 현재까지 몇초(ms)지났는지 알아옴
     })
     // 입력 후 초기화
     input_content.value = '';
